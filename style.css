@@ -16,6 +16,7 @@ html,body{
     background-image: url('./images/macos-bg.jpg');
     background-position: center;
     background-size: cover;
+    position: relative;
 }
 
 .desktop-main{
@@ -45,7 +46,6 @@ html,body{
 }
 
 .file-img{
-    /* background-color: red; */
     width: 80px;
 }
 
@@ -60,10 +60,60 @@ html,body{
 }
 
 .dock{
-    bottom: 0;
-    width: 50%;
-    background-color: red;
-    padding: 20px;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.21);
+    padding: 15px;
     display: flex;
-    transform: translateX(50%);
+    align-items: center;
+    gap: 20px;
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.dock-icon {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.dock-icon:hover {
+    transform: scale(1.5);
+}
+
+.dock-icon img{
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .dock {
+        padding: 10px;
+        gap: 15px;
+        bottom: 5px;
+    }
+    
+    .dock-icon img {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dock {
+        padding: 8px;
+        gap: 10px;
+        flex-wrap: wrap;
+        max-width: 90vw;
+    }
+    
+    .dock-icon img {
+        width: 30px;
+        height: 30px;
+    }
 }
